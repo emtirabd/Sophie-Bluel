@@ -56,7 +56,26 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0;
+}
+.edition {
+	background-color: black;
+	color: white;
+	position: fixed;
+	width: 100%;
+	max-width: 1100px;
+	
+	top: 0;
+	
+	padding: 20px;
+	text-align: center;
+	z-index: 900;
+}
+.edition i {
+	padding-right: 10px ;
+}
+.main-connexion {
+	margin-top: 120px ;
 }
 section {
 	margin: 50px 0
@@ -97,6 +116,16 @@ nav li {
 
 li:hover {
 	color: #B1663C;
+}
+nav a {
+	text-decoration: none;
+	color: black;
+}
+nav a:hover{
+	color: #B1663C;
+}
+#login-bold{
+	font-weight: bold;
 }
 #introduction {
 	display: flex;
@@ -179,10 +208,22 @@ input[type="submit"]{
 	text-align: center;
 	border-radius: 60px ;
 }
+.forget-password-container{
+	text-align: center;
+}
+#forget-password {
+	color: black;
+}
 
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
+}
+.footer-connexion {
+    position: fixed;
+    bottom: 0;
+	right: 100px;
+    width: 100%;
 }
 
