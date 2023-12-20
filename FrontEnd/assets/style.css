@@ -124,7 +124,7 @@ nav a {
 nav a:hover{
 	color: #B1663C;
 }
-#login-bold{
+#link-bold{
 	font-weight: bold;
 }
 #introduction {
@@ -153,6 +153,29 @@ nav a:hover{
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
+}
+.filters-btn {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin: 50px 0;
+
+}
+.filters-btn button {
+	font-family: 'Syne';
+	font-size: 14px;
+	color: #1D6154;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #1D6154;
+	background-color: white ;
+	padding: 5px 20px;
+	text-align: center;
+	border-radius: 60px ;
+}
+#btn-selected {
+	color: white;
+	background-color: #1D6154;
 }
 .gallery {
 	width: 100%;
