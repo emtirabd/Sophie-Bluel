@@ -31,6 +31,9 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
+.main-container{
+	width: 100%;
+}
 ol, ul {
 	list-style: none;
 }
@@ -58,15 +61,59 @@ header {
 	justify-content: space-between;
 	margin: 50px 0;
 }
+.modale-bg{
+	position: fixed;
+	width: 1140px;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.30);
+	display: none;
+}
+.modale-container {
+	position: fixed;
+	display: flex;
+	justify-content:center ;
+	align-items: center;
+	z-index: 999;
+	width: inherit;
+	height: 100%;
+}
+.modale{
+	background-color: white;
+	height: 630px;
+	width: 600px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.modale p{
+	margin: 50px 0;
+	font-size: 25px;
+}
+.modale-content {
+	height: 400px;
+	width: 400px;
+	border-bottom: 1px solid #B3B3B3;
+}
+.modale button{
+	font-family: 'Syne';
+	font-size: 14px;
+	color: white;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #1D6154;
+	background-color: #1D6154;
+	padding: 10px 40px;
+	text-align: center;
+	border-radius: 60px ;
+	margin: 30px 0;
+}
 .edition {
 	background-color: black;
 	color: white;
 	position: fixed;
 	width: 100%;
 	max-width: 1100px;
-	
 	top: 0;
-	
 	padding: 20px;
 	text-align: center;
 	z-index: 900;
