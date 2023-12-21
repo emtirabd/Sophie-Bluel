@@ -28,4 +28,26 @@ async function displayWorks(){
 }
 displayWorks()
 
+//Affichage des boutons categories 
 
+let filtres = document.querySelector(".filters-btn");
+
+async function getCategories(){
+    let response = await fetch("http://localhost:5678/api/categories");
+    return await response.json(); 
+    
+}
+getCategories()
+
+async function displayCategories(){
+    let arrayCategories = await getCategories();
+    arrayCategories.forEach(categories => {
+
+        let button = document.createElement("button");
+
+        button.textContent = categories.name;
+
+        filtres.appendChild(button);
+    })
+}
+displayCategories()
