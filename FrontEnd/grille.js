@@ -7,7 +7,6 @@ async function getWorks(){
     return await response.json(); //pour retourner await .json (notre tableau des works) à chaque appel de la fonction
     
 }
-getWorks()
 
 //Affichage des works dans le DOM
 async function displayWorks(){
@@ -37,7 +36,6 @@ async function getCategories(){
     return await response.json(); 
     
 }
-getCategories()
 
 async function displayCategories(){
     let arrayCategories = await getCategories();
