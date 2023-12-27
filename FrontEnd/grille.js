@@ -9,8 +9,16 @@ async function getWorks(){
 }
 
 //Affichage des works dans le DOM
-async function displayWorks(){
+async function displayWorks(categoryId = 0){
+
     let arrayWorks = await getWorks();
+
+    if(categoryId !== 0) {
+        arrayWorks = arrayWorks.filter((work)=> { return work.categoryId === categoryId })
+    }
+
+    gallery.innerHTML = "";
+
     arrayWorks.forEach(work => {
 
         let figure = document.createElement("figure");
@@ -38,12 +46,38 @@ async function getCategories(){
 }
 
 async function displayCategories(){
+
     let arrayCategories = await getCategories();
+    let allFilter = {
+        id: 0,
+        name: 'Tous'
+    } ;
+
+    // Ajoute l'élément en première position du tableau
+    arrayCategories.unshift(allFilter)
+
     arrayCategories.forEach(categories => {
 
         let button = document.createElement("button");
 
+        if(categories.id === 0) {
+            button.classList.add('btn-selected')
+        }
+
         button.textContent = categories.name;
+
+        button.addEventListener('click', ()=> {
+            displayWorks(categories.id);
+            
+            // Retirer la classe 'btn-selected' de tous les boutons
+            document.querySelectorAll('.btn-selected').forEach(btn => {
+                btn.classList.remove('btn-selected');
+            });
+
+            // Ajouter la classe 'btn-selected' au bouton actuel
+            button.classList.add('btn-selected');
+
+        })
 
         filtres.appendChild(button);
     })
