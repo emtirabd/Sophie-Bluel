@@ -244,7 +244,6 @@ margin: auto;
 }
 #contact > * {
 	text-align: center;
-
 }
 #contact h2{
 	margin-bottom: 20px;
@@ -269,6 +268,12 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+.form-section{
+	text-align: center;
+}
+#error {
+	color: red;
+}
 
 input[type="submit"]{
 	font-family: 'Syne';
@@ -279,6 +284,7 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+	cursor: pointer;
 }
 .forget-password-container{
 	text-align: center;

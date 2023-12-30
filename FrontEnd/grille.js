@@ -42,7 +42,6 @@ let filtres = document.querySelector(".filters-btn");
 async function getCategories(){
     let response = await fetch("http://localhost:5678/api/categories");
     return await response.json(); 
-    
 }
 
 async function displayCategories(){
@@ -60,12 +59,15 @@ async function displayCategories(){
 
         let button = document.createElement("button");
 
+        // Ajout de la classe 'btn-selected' si la catégorie a un id de 0
         if(categories.id === 0) {
             button.classList.add('btn-selected')
         }
 
+        // Attribution du texte au bouton
         button.textContent = categories.name;
 
+        // Ajout d'un écouteur d'événement pour le clic sur le bouton
         button.addEventListener('click', ()=> {
             displayWorks(categories.id);
             
@@ -79,6 +81,7 @@ async function displayCategories(){
 
         })
 
+        // Ajout du bouton au conteneur de filtres dans le DOM
         filtres.appendChild(button);
     })
 }
