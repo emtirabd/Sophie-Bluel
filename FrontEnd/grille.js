@@ -88,7 +88,7 @@ async function displayCategories(){
 }
 displayCategories()
 
-maincontainer.classList.remove("margintop");
+maincontainer.classList.remove("paddingtop");
 modifier.remove();
 //si l'utilisateur est connecté
 
@@ -100,7 +100,7 @@ if (isLogged === "true") {
     let loggedElement = document.getElementById("edition-banniere");
     loggedElement.classList.remove("hidden");
 
-    maincontainer.classList.add("margintop");
+    maincontainer.classList.add("paddingtop");
 
     //supprimer les filtres quand connecté
     filtres.remove();
@@ -113,6 +113,10 @@ if (isLogged === "true") {
     logout.textContent = "logout";
     logout.addEventListener("click", ()=>{
         window.localStorage.removeItem("logged");
-        maincontainer.classList.remove("margintop");
+        maincontainer.classList.remove("paddingtop");
+    })
+
+    modifier.addEventListener("click", ()=> {
+        
     })
 }

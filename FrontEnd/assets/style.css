@@ -34,8 +34,8 @@ body {
 .main-container{
 	width: 100%;
 }
-.margintop {
-	margin-top: 100px;
+.paddingtop {
+	padding-top: 50px;
 }
 ol, ul {
 	list-style: none;
@@ -70,6 +70,7 @@ header {
 	width: 100%;
 	height: 100%;
 	background: rgba(0, 0, 0, 0.30);
+	z-index: 998;
 	display: none;
 }
 .modale-container {
