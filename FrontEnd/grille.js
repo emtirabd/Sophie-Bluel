@@ -1,5 +1,6 @@
 //Variables
-let gallery = document.querySelector("#portfolio .gallery")
+let gallery = document.querySelector("#portfolio .gallery");
+let maincontainer = document.getElementById("maincontainer");
 
 // Récupération des élément depuis l'API
 async function getWorks(){
@@ -88,6 +89,7 @@ async function displayCategories(){
 displayCategories()
 
 //si l'utilisateur est connecté
+maincontainer.classList.remove("margintop");
 
 let isLogged = window.localStorage.getItem("logged");
 let logout = document.querySelector(".logout");
@@ -97,9 +99,12 @@ if (isLogged === "true") {
     let loggedElement = document.getElementById("edition-banniere");
     loggedElement.classList.remove("hidden");
 
+    maincontainer.classList.add("margintop");
+
     //au clic sur logout on se déconnecte
     logout.textContent = "logout";
     logout.addEventListener("click", ()=>{
         window.localStorage.removeItem("logged");
+        maincontainer.classList.remove("margintop");
     })
 }
