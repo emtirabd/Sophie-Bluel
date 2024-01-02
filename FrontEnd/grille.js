@@ -1,12 +1,13 @@
 //Variables
 let gallery = document.querySelector("#portfolio .gallery");
+let filtres = document.querySelector(".filters-btn");
 let maincontainer = document.getElementById("maincontainer");
+let modifier = document.querySelector("#portfolio .projet-edition span");
 
 // Récupération des élément depuis l'API
 async function getWorks(){
     let response = await fetch("http://localhost:5678/api/works");
     return await response.json(); //pour retourner await .json (notre tableau des works) à chaque appel de la fonction
-    
 }
 
 //Affichage des works dans le DOM
@@ -38,7 +39,6 @@ displayWorks()
 
 //Affichage des boutons categories 
 
-let filtres = document.querySelector(".filters-btn");
 
 async function getCategories(){
     let response = await fetch("http://localhost:5678/api/categories");
@@ -88,8 +88,9 @@ async function displayCategories(){
 }
 displayCategories()
 
-//si l'utilisateur est connecté
 maincontainer.classList.remove("margintop");
+modifier.remove();
+//si l'utilisateur est connecté
 
 let isLogged = window.localStorage.getItem("logged");
 let logout = document.querySelector(".logout");
@@ -100,6 +101,13 @@ if (isLogged === "true") {
     loggedElement.classList.remove("hidden");
 
     maincontainer.classList.add("margintop");
+
+    //supprimer les filtres quand connecté
+    filtres.remove();
+
+    // On réinsère le "modifier" qu'on a retiré 
+    let parentElementModifier = document.querySelector("#portfolio .projet-edition");
+    parentElementModifier.appendChild(modifier);
 
     //au clic sur logout on se déconnecte
     logout.textContent = "logout";
