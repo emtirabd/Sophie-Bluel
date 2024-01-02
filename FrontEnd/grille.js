@@ -3,6 +3,8 @@ let gallery = document.querySelector("#portfolio .gallery");
 let filtres = document.querySelector(".filters-btn");
 let maincontainer = document.getElementById("maincontainer");
 let modifier = document.querySelector("#portfolio .projet-edition span");
+let bgModale = document.querySelector(".modale-bg");
+let xmark = document.querySelector(".modale .fa-xmark");
 
 // Récupération des élément depuis l'API
 async function getWorks(){
@@ -117,6 +119,10 @@ if (isLogged === "true") {
     })
 
     modifier.addEventListener("click", ()=> {
-        
+        bgModale.style.display = "flex";  
+    })
+
+    xmark.addEventListener("click", ()=> {
+        bgModale.style.display = "none"; 
     })
 }

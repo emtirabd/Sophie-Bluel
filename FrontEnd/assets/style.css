@@ -98,6 +98,7 @@ header {
 }
 .modale i {
 	font-size: 20px;
+	cursor: pointer;
 }
 .modale p{
 	margin: 50px 0;
@@ -222,6 +223,7 @@ nav a:hover{
 	position: relative;
 }
 .projet-edition span {
+	cursor: pointer;
 	position: absolute;
 	top: 6px;
 	right: 28%;
