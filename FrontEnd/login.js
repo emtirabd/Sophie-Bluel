@@ -18,6 +18,7 @@ async function login(){
     
     form.addEventListener("submit", (event) => {
         event.preventDefault();
+
         let user = {
             "email": email.value,
             "password": password.value
@@ -26,9 +27,12 @@ async function login(){
         if(user.email !== "" && user.password !== ""){
             postUser(user).then((response)=>{
                 if(response.token){
-                    //stocker le token
-                    
-                    window.location.href = "./index.html"
+                    //stocker le token dans localStorage 
+                    window.localStorage.setItem("token", response.token);
+                    // Définir que l'utilisateur est connecté
+                    window.localStorage.setItem("logged", "true");
+                    window.location.href = "./index.html";
+
                 } else {
                     error.innerHTML = "L'identification est invalide ! "
                 }
@@ -45,6 +49,11 @@ async function login(){
     });
 }
 login()
+
+
+
+
+
 
        
 

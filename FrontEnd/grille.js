@@ -86,3 +86,20 @@ async function displayCategories(){
     })
 }
 displayCategories()
+
+//si l'utilisateur est connecté
+
+let isLogged = window.localStorage.getItem("logged");
+let logout = document.querySelector(".logout");
+
+if (isLogged === "true") {
+    // L'utilisateur est connecté donc on peut ajouter des elements sur la page
+    let loggedElement = document.getElementById("edition-banniere");
+    loggedElement.classList.remove("hidden");
+
+    //au clic sur logout on se déconnecte
+    logout.textContent = "logout";
+    logout.addEventListener("click", ()=>{
+        window.localStorage.removeItem("logged");
+    })
+}

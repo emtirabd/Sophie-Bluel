@@ -20,6 +20,7 @@
       referrerpolicy="no-referrer"
     />
     <script src="./grille.js" defer></script>
+    <script src="./login.js" defer></script>
   </head>
   <body>
     <div class="main-container">
@@ -27,15 +28,13 @@
         <div class="modale-container">
           <div class="modale">
             <p>Galerie photo</p>
-            <div class="modale-content">
-				
-			</div>
+            <div class="modale-content"></div>
             <button>Ajouter une photo</button>
           </div>
         </div>
       </div>
-      <div class="edition">
-        <p><i class="fa-regular fa-pen-to-square"></i>Mode édition</p>
+        <div id="edition-banniere" class="edition hidden" >
+          <p><i class="fa-regular fa-pen-to-square"></i>Mode édition</p>
       </div>
       <header>
         <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -43,7 +42,7 @@
           <ul>
             <li id="link-bold">projets</li>
             <li>contact</li>
-            <li><a href="connexion.html">login</a></li>
+            <li><a href="connexion.html" class="logout">login</a></li>
             <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
           </ul>
         </nav>
@@ -74,8 +73,7 @@
         </section>
         <section id="portfolio">
           <h2>Mes Projets</h2>
-          <div class="filters-btn">
-          </div>
+          <div class="filters-btn"></div>
           <div class="gallery"></div>
         </section>
         <section id="contact">
