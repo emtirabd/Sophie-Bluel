@@ -15,26 +15,26 @@ async function getWorks(){
 //Affichage des works dans le DOM
 async function displayWorks(categoryId = 0){
 
-    let arrayWorks = await getWorks();
+    await getWorks().then((arrayWorks)=> {
+        
+        if(categoryId !== 0) {
+            arrayWorks = arrayWorks.filter((work)=> { return work.categoryId === categoryId })
+        }
 
-    if(categoryId !== 0) {
-        arrayWorks = arrayWorks.filter((work)=> { return work.categoryId === categoryId })
-    }
+        gallery.innerHTML = "";
 
-    gallery.innerHTML = "";
-
-    arrayWorks.forEach(work => {
-
-        let figure = document.createElement("figure");
-        let img = document.createElement("img");
-        let figcaption = document.createElement("figcaption");
-
-        img.src = work.imageUrl;
-        figcaption.textContent = work.title;
-
-        figure.appendChild(img);
-        figure.appendChild(figcaption);
-        gallery.appendChild(figure);
+        arrayWorks.forEach(work => {
+            let figure = document.createElement("figure");
+            let img = document.createElement("img");
+            let figcaption = document.createElement("figcaption");
+    
+            img.src = work.imageUrl;
+            figcaption.textContent = work.title;
+    
+            figure.appendChild(img);
+            figure.appendChild(figcaption);
+            gallery.appendChild(figure);
+        });
     });
 }
 displayWorks()
@@ -49,7 +49,7 @@ async function getCategories(){
 
 async function displayCategories(){
 
-    let arrayCategories = await getCategories();
+    await getCategories().then((arrayCategories) => {
     let allFilter = {
         id: 0,
         name: 'Tous'
@@ -86,7 +86,8 @@ async function displayCategories(){
 
         // Ajout du bouton au conteneur de filtres dans le DOM
         filtres.appendChild(button);
-    })
+        })
+    });
 }
 displayCategories()
 
