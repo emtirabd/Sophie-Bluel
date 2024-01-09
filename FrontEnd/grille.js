@@ -44,6 +44,7 @@ function displayWorks(categoryId = 0, isLogged = 'false'){
                 deleteProjet.innerHTML = '<i class="fa-regular fa-trash-can"></i>'
                 deleteProjet.addEventListener('click', ()=> {
                    // DELETE PROJET API CALL avec work.id
+                   deleteProject(work.id);
                 })
                 figure.appendChild(deleteProjet);
                 figure.classList.add('modale-figure')
@@ -61,7 +62,6 @@ function displayWorks(categoryId = 0, isLogged = 'false'){
 displayWorks()
 
 //Affichage des boutons categories 
-
 
 async function getCategories(){
     let response = await fetch("http://localhost:5678/api/categories");
@@ -149,4 +149,28 @@ if (token !== null && isLogged !== null) {
     xmark.addEventListener("click", ()=> {
         bgModale.style.display = "none"; 
     })
+}
+
+//suppression d'une image dans la modale
+
+async function deleteProject(workId) {
+    try {
+        let response = await fetch('http://localhost:5678/api/works/' + workId, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': 'Bearer ' +  token, 
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.ok) {
+            // Suppression réussie 
+            console.log('Projet avec l\'ID ' + workId + ' supprimé avec succès.');
+            // Vous pouvez mettre à jour l'affichage des projets dans la modale ici
+        } else {
+            console.error('Erreur lors de la suppression du projet avec l\'ID ' + workId + '.');
+        }
+    } catch (error) {
+        console.error('Erreur lors de la suppression du projet:', error);
+    }
 }
