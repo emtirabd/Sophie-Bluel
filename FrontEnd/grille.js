@@ -13,27 +13,49 @@ async function getWorks(){
 }
 
 //Affichage des works dans le DOM
-async function displayWorks(categoryId = 0){
+function displayWorks(categoryId = 0, isLogged = 'false'){
 
-    await getWorks().then((arrayWorks)=> {
+    getWorks().then((arrayWorks)=> {
         
         if(categoryId !== 0) {
             arrayWorks = arrayWorks.filter((work)=> { return work.categoryId === categoryId })
         }
 
-        gallery.innerHTML = "";
+        let targetGallery = null;
+
+        if(isLogged === 'true') {
+            console.log('générer galerie dans modal')
+            targetGallery = document.querySelector('.modale-content');
+        } else {
+            console.log('générer galerie dans page accueil');
+            targetGallery = gallery
+        }
+
+        targetGallery.innerHTML = "";
 
         arrayWorks.forEach(work => {
             let figure = document.createElement("figure");
             let img = document.createElement("img");
-            let figcaption = document.createElement("figcaption");
-    
+
             img.src = work.imageUrl;
-            figcaption.textContent = work.title;
-    
             figure.appendChild(img);
-            figure.appendChild(figcaption);
-            gallery.appendChild(figure);
+
+            if(isLogged === 'true') {
+                let deleteProjet = document.createElement("span");
+                deleteProjet.innerHTML = '<i class="fa-regular fa-trash-can"></i>'
+                deleteProjet.addEventListener('click', ()=> {
+                   // DELETE PROJET API CALL avec work.id
+                })
+                figure.appendChild(deleteProjet);
+                figure.classList.add('modal_figure')
+
+            } else {
+                let figcaption = document.createElement("figcaption");
+                figcaption.textContent = work.title;
+                figure.appendChild(figcaption);
+            }
+
+            targetGallery.appendChild(figure);
         });
     });
 }
@@ -93,12 +115,13 @@ displayCategories()
 
 maincontainer.classList.remove("paddingtop");
 modifier.remove();
-//si l'utilisateur est connecté
 
+//si l'utilisateur est connecté
+let token = window.localStorage.getItem("token");
 let isLogged = window.localStorage.getItem("logged");
 let logout = document.querySelector(".logout");
 
-if (isLogged === "true") {
+if (token !== null && isLogged !== null) {
     // L'utilisateur est connecté donc on peut ajouter des elements sur la page
     let loggedElement = document.getElementById("edition-banniere");
     loggedElement.classList.remove("hidden");
@@ -115,12 +138,13 @@ if (isLogged === "true") {
     //au clic sur logout on se déconnecte
     logout.textContent = "logout";
     logout.addEventListener("click", ()=>{
-        window.localStorage.removeItem("logged");
+        window.localStorage.removeItem("logged"); //a retirer ?
         maincontainer.classList.remove("paddingtop");
     })
 
     modifier.addEventListener("click", ()=> {
         bgModale.style.display = "flex";  
+        displayWorks(0, isLogged);
     })
 
     xmark.addEventListener("click", ()=> {

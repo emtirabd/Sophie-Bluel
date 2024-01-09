@@ -4,6 +4,15 @@ let password = document.querySelector("form #password");
 let form = document.querySelector("form");
 let error = document.querySelector("#error");
 
+// Vérifie si l'utilisateur est déconnecté
+if (window.localStorage.getItem("token") !== null) {
+
+    // Ajouter des actions pour gérer la déconnexion
+    error.innerHTML = "Vous avez été déconnecté";
+    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("logged");
+}
+
 //Fonction qui récupère les users
 async function postUser (user){
     return await fetch("http://localhost:5678/api/users/login", {
