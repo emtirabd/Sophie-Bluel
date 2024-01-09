@@ -24,10 +24,8 @@ function displayWorks(categoryId = 0, isLogged = 'false'){
         let targetGallery = null;
 
         if(isLogged === 'true') {
-            console.log('générer galerie dans modal')
             targetGallery = document.querySelector('.modale-content');
         } else {
-            console.log('générer galerie dans page accueil');
             targetGallery = gallery
         }
 
@@ -40,14 +38,15 @@ function displayWorks(categoryId = 0, isLogged = 'false'){
             img.src = work.imageUrl;
             figure.appendChild(img);
 
-            if(isLogged === 'true') {
+            if(isLogged === "true") {
                 let deleteProjet = document.createElement("span");
+                deleteProjet.classList.add('span-trash');
                 deleteProjet.innerHTML = '<i class="fa-regular fa-trash-can"></i>'
                 deleteProjet.addEventListener('click', ()=> {
                    // DELETE PROJET API CALL avec work.id
                 })
                 figure.appendChild(deleteProjet);
-                figure.classList.add('modal_figure')
+                figure.classList.add('modale-figure')
 
             } else {
                 let figcaption = document.createElement("figcaption");

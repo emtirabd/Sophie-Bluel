@@ -87,6 +87,7 @@ header {
 	background-color: white;
 	height: 630px;
 	width: 600px;
+	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -100,6 +101,25 @@ header {
 	font-size: 20px;
 	cursor: pointer;
 }
+.modale .modale-figure{
+	position: relative;
+	width: 70px;
+	height: 100px;
+}
+.modale .span-trash{
+	width: 17px;
+	height: 17px;
+	border-radius: 3px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background-color: black;
+	color: white;
+	text-align: center;
+}
+.modale .span-trash i{
+	font-size: 10px;
+}
 .modale p{
 	margin: 50px 0;
 	font-size: 25px;
@@ -108,6 +128,14 @@ header {
 	height: 400px;
 	width: 400px;
 	border-bottom: 1px solid #B3B3B3;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(3, auto);
+	gap: 8px;
+}
+.modale-content img {
+	width: 70px;
+	height: 100px;
 }
 .modale button{
 	font-family: 'Syne';
