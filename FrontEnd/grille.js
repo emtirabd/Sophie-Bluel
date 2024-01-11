@@ -4,6 +4,7 @@ let filtres = document.querySelector(".filters-btn");
 let maincontainer = document.getElementById("maincontainer");
 let modifier = document.querySelector("#portfolio .projet-edition span");
 let bgModale = document.querySelector(".modale-bg");
+let bgModaleAdd = document.querySelector(".modale-add-bg");
 let xmark = document.querySelector(".modale .fa-xmark");
 
 // Récupération des élément depuis l'API
@@ -173,3 +174,23 @@ async function deleteProject(workId) {
         console.error("Erreur lors de la suppression du projet:", error);
     }
 }
+//affichage de la deuxième modale au clic sur ajouter une photo
+function addPhoto(){
+    let btnAddPhoto = document.querySelector(".modale button");
+
+    btnAddPhoto.addEventListener("click", () => {
+        bgModale.style.display = "none";
+        bgModaleAdd.style.display = "flex";
+    })
+}
+addPhoto()
+//fonction retour sur modale depuis modale-add
+function returnToModale(){
+    let arrowLeftModaleAdd = document.querySelector(".span-arrow")
+
+    arrowLeftModaleAdd.addEventListener("click", () => {
+        bgModaleAdd.style.display = "none";
+        bgModale.style.display = "flex";
+    })
+}
+returnToModale()
