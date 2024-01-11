@@ -152,7 +152,6 @@ if (token !== null && isLogged !== null) {
 }
 
 //suppression d'une image dans la modale
-
 async function deleteProject(workId) {
     try {
         let response = await fetch('http://localhost:5678/api/works/' + workId, {
@@ -165,12 +164,12 @@ async function deleteProject(workId) {
 
         if (response.ok) {
             // Suppression réussie 
-            console.log('Projet avec l\'ID ' + workId + ' supprimé avec succès.');
-            // Vous pouvez mettre à jour l'affichage des projets dans la modale ici
+            console.log("Projet avec l'ID " + workId + " supprimé avec succès.");
+
         } else {
-            console.error('Erreur lors de la suppression du projet avec l\'ID ' + workId + '.');
+            console.error("Erreur lors de la suppression du projet avec l'ID " + workId + ".");
         }
     } catch (error) {
-        console.error('Erreur lors de la suppression du projet:', error);
+        console.error("Erreur lors de la suppression du projet:", error);
     }
 }
