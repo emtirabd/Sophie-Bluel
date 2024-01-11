@@ -192,6 +192,7 @@ header {
     left: 30px;
 }
 .modale-add button{
+	width: 250px;
 	font-family: 'Syne';
 	font-size: 14px;
 	color: white;
@@ -217,9 +218,39 @@ header {
 	width: 400px;
 	border-bottom: 1px solid #B3B3B3;
 }
-
-
-
+.modale-add-content .container-photo{
+	background-color: #E8F1F6;
+	height: 170px;
+	color: #CBD6DC;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+}
+.modale-add-content #btn-add-photo{
+	width: 200px;
+	background-color: #CBD6DC;
+	color: #306685;
+	border: transparent;
+	margin: 0;
+}
+.modale-add-content form{
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	margin-top:30px;
+}
+.modale-add-content input {
+	height: 45px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.container-photo i {
+	cursor: auto;
+	font-size: 70px;
+	padding-top: 10px;
+}
 .edition {
 	background-color: black;
 	color: white;
