@@ -208,7 +208,6 @@ header {
 }
 .modale-add button.disabled { 
 	background-color: #A7A7A7; 
-	pointer-events: none; 
 	border-color: transparent;
   }
 .modale-add i {

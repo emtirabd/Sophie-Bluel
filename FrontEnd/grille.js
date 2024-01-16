@@ -46,7 +46,10 @@ function displayWorks(categoryId = 0, isLogged = "false") {
         deleteProjet.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
         deleteProjet.addEventListener("click", () => {
           // DELETE PROJET API CALL avec work.id
-          deleteProject(work.id);
+          deleteProject(work.id).then(()=> {
+            figure.remove();
+            displayWorks()
+          });
         });
         figure.appendChild(deleteProjet);
         figure.classList.add("modale-figure");
@@ -61,7 +64,6 @@ function displayWorks(categoryId = 0, isLogged = "false") {
   });
 }
 displayWorks();
-console.log(displayWorks);
 //Affichage des boutons categories
 
 async function getCategories() {
@@ -215,7 +217,7 @@ let fileInput = document.querySelector("#file-input");
 
 // Fonction pour activer ou désactiver le bouton en fonction de l'état des champs
 function verifFormCompleted() {
-  if (titreAjout.value !== "" && categorieAjout.value !== "" && fileInput.files[0] !== "") {
+  if (titreAjout.value !== "" && categorieAjout.value !== "" && fileInput.files[0] !== undefined) {
     // Activer le bouton si tous les champs sont remplis
     btnValider.classList.remove("disabled");
   } else {
@@ -230,6 +232,10 @@ categorieAjout.addEventListener("input", verifFormCompleted);
 fileInput.addEventListener("input", verifFormCompleted);
 
 btnValider.addEventListener("click", async function (e) {
+  if(btnValider.classList.contains('disabled')) {
+    alert('Un ou plusieurs champs sont vide');
+    return;
+  }
   e.preventDefault();
   const formData = new FormData();
   formData.append("image", fileInput.files[0]);
@@ -245,11 +251,11 @@ btnValider.addEventListener("click", async function (e) {
     .then((response) => {
       console.log("Response from API:", response);
       if (!response.ok) {
-        throw new Error("Erreur lors de la requête");
+        console.error("Erreur lors de la requête");
       }
       // Si l'ajout est réussi, fermez la modale et met à jour la galerie
       bgModaleAdd.style.display = "none";
-      return displayWorks(0, isLogged);
+      displayWorks();
     })
 
     .catch((error) => {
