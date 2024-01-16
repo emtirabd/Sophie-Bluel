@@ -45,14 +45,16 @@
                 <i class="fa-regular fa-image"></i>
                 <button id="btn-add-photo">+ Ajouter photo</button>
               </div>
-              <form action="#" method="post">
+              <form action="#" method="post" id="form-img">
                 <label for="title">Titre</label>
                 <input type="text" name="title" id="title">
                 <label for="category">Catégorie</label>
-                <input type="select" name="category" id="category">
+                <select name="category" id="category"></select>
+                <input type="file" name="file-input" id="file-input">
+                <img src="" alt="Preview" id="preview-img">
             </form>
             </div>
-            <button>Valider</button>
+            <button type="submit" id="btn-valider">Valider</button>
           </div>
         </div>
       </div>
